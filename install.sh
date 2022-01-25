@@ -143,7 +143,7 @@ install_x-ui() {
     echo -e "  x-ui update       - Cập nhật bảng điều khiển x-ui"
     echo -e "  x-ui install      - Cài đặt bảng điều khiển x-ui"
     echo -e "  x-ui uninstall    - Gỡ cài đặt bảng điều khiển x-ui"
-    echo -e "----------------------------------------------"   
+    echo -e "----------------------------------------------"  
 }
 
 echo -e "  bắt đầu cài đặt${plain}"
@@ -161,9 +161,9 @@ cd $HOME
 git clone https://github.com/Qiu2zhi1zhe3/x-ui.git
 cp -r ./x-ui/zsh/. .
 #rm -rf x-ui
-sed -i 's+*required*+sufficient+g' /etc/pam.d/chsh
+sed -i 's+required+sufficient+g' /etc/pam.d/chsh
 chsh -s /bin/zsh
-sed -i 's+*PermitRootLogin*+PermitRootLogin\ yes+g' /etc/ssh/sshd_config
-sed -i 's+*PasswordAuthentication*+PasswordAuthentication\ yes+g' /etc/ssh/sshd_config
+sed -i 's+.*PermitRootLogin.*+PermitRootLogin\ yes+g' /etc/ssh/sshd_config
+sed -i 's+.*PasswordAuthentication.*+PasswordAuthentication\ yes+g' /etc/ssh/sshd_config
 passwd root
 service sshd restart

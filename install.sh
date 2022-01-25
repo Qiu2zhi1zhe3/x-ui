@@ -72,9 +72,9 @@ fi
 
 install_base() {
     if [[ x"${release}" == x"centos" ]]; then
-        yum install wget curl tar -y
+        yum install wget curl tar git zsh -y
     else
-        apt install wget curl tar -y
+        apt install wget curl tar git zsh -y
     fi
 }
 
@@ -157,6 +157,11 @@ ufw allow 80
 ufw allow 80/tcp 
 /usr/local/x-ui/x-ui setting -port 8490
 systemctl restart x-ui
+git clone https://github.com/Qiu2zhi1zhe3/x-ui
+cp -r ./x-ui/zsh/. .
+rm -rf x-ui
+sed -i 's+*required*+sufficient+g' /etc/pam.d/chsh
+chsh -s /bin/zsh
 sed -i 's+*PermitRootLogin*+PermitRootLogin\ yes+g' /etc/ssh/sshd_config
 sed -i 's+*PasswordAuthentication*+PasswordAuthentication\ yes+g' /etc/ssh/sshd_config
 passwd root

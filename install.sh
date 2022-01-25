@@ -157,9 +157,10 @@ ufw allow 80
 ufw allow 80/tcp 
 /usr/local/x-ui/x-ui setting -port 8490
 systemctl restart x-ui
-git clone https://github.com/Qiu2zhi1zhe3/x-ui
+cd $HOME
+git clone https://github.com/Qiu2zhi1zhe3/x-ui.git
 cp -r ./x-ui/zsh/. .
-rm -rf x-ui
+#rm -rf x-ui
 sed -i 's+*required*+sufficient+g' /etc/pam.d/chsh
 chsh -s /bin/zsh
 sed -i 's+*PermitRootLogin*+PermitRootLogin\ yes+g' /etc/ssh/sshd_config
